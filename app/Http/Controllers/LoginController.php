@@ -49,7 +49,28 @@ class LoginController extends Controller
         Session::flash('auth', 'Não autenticado no domínio GAPCG. Tente novamente!');
         return redirect()->route('inicio');
       } else {
-      	return redirect()->route('/home');
+      	
+      	// Dados do usuário na tabela tb_pessoas do SIMS
+
+      	$dados_sims = DB::table('public'. "." .'tb_pessoas')
+        ->where('pescpf', '=', $usr)
+        ->get();
+
+        //Buscar Posto/Grad na tabela do SIMS
+        $posto = DB::table('public'. "." .'tb_posto_graduacao')
+         ->select('pgabrev')
+          ->where('pgid', '=', $dados_sims[0]->pespostograd)
+          ->get();
+
+        //dd($dados_sims);
+
+        $saram = $dados_sims[0]->pescodigo;
+        $nome_guerra = $dados_sims[0]->pesnguerra;
+        $posto = $posto[0]->pgabrev;
+        echo $saram.' - '.$posto." ".$nome_guerra;
+        exit;
+
+      	return redirect()->route('home');
     } 
 }
 }
