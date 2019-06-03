@@ -15,7 +15,7 @@
                             <label for="cpf" class="col-md-4 col-form-label text-md-right">CPF</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="cpf" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
 
                                 @if ($errors->has('cpf'))
                                     <span class="invalid-feedback" role="alert">

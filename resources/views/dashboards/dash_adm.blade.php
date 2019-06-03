@@ -1,0 +1,1 @@
+{{ $saram }}-{{ $nome_guerra }}-{{ $posto }}

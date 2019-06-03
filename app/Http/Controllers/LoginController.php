@@ -54,23 +54,23 @@ class LoginController extends Controller
 
       	$dados_sims = DB::table('public'. "." .'tb_pessoas')
         ->where('pescpf', '=', $usr)
-        ->get();
+        ->first();
+
+        //dd($dados_sims);
 
         //Buscar Posto/Grad na tabela do SIMS
         $posto = DB::table('public'. "." .'tb_posto_graduacao')
          ->select('pgabrev')
-          ->where('pgid', '=', $dados_sims[0]->pespostograd)
-          ->get();
+          ->where('pgid', '=', $dados_sims->pespostograd)
+          ->first();
 
-        //dd($dados_sims);
+        $saram = $dados_sims->pescodigo;
+        $nome_guerra = $dados_sims->pesnguerra;
+        $posto = $posto->pgabrev;
+        //echo $saram.' - '.$posto." ".$nome_guerra;
+        //exit;
 
-        $saram = $dados_sims[0]->pescodigo;
-        $nome_guerra = $dados_sims[0]->pesnguerra;
-        $posto = $posto[0]->pgabrev;
-        echo $saram.' - '.$posto." ".$nome_guerra;
-        exit;
-
-      	return redirect()->route('home');
+      	return view('dashboards.dash_adm', compact('saram', 'nome_guerra', 'posto'));
     } 
 }
 }

@@ -91,7 +91,7 @@
                     Sistema de Senhas do ESCG
                 </div>
                 @if (session('auth'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-danger" role="alert">
                             {{ session('auth') }}
                         </div>
                     @endif
