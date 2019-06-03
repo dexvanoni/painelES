@@ -13,8 +13,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('inicio');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tv', 'TvController@tv')->name('tv');
+
+Route::post('/log_in', 'LoginController@log_in')->name('log_in');
