@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/tv', 'TvController@tv')->name('tv');
 
 Route::post('/log_in', 'LoginController@log_in')->name('log_in');
+Route::resource('militar', 'MilitarController');

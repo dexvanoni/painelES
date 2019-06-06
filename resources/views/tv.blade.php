@@ -74,7 +74,7 @@
 						SENHA <br>
 					</h4>
 					<h1>
-						06N <br> FUNSA
+						{{ $painel[0]->senha.' '.$painel[0]->tipo }} <br> {{ $painel[0]->secao }}
 					</h1>
 				</div>
 				
@@ -86,9 +86,15 @@
 					<h1><SPAN ID="Clock">00:00:00</SPAN></h1>
 				</div>
 				<div id="t5" class="col-9">
-					<h4>Atendimento: Normal</h4>
-					<h4>Seção: FUNSA</h4>
-					<h4>Militar: 3S Fulano</h4>
+					<h4>Atendimento: 
+					@if ($painel[0]->tipo == 'P')
+						Prioridade
+					@else
+						Normal
+					@endif
+					</h4>
+					<h4>Seção: {{ $painel[0]->secao }}</h4>
+					<h4>Militar: {{ $painel[0]->atendente }}</h4>
 				</div>
 			</div>
 	</header>

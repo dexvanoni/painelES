@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Militar;
 
 class LoginController extends Controller
 {
@@ -67,10 +68,16 @@ class LoginController extends Controller
         $saram = $dados_sims->pescodigo;
         $nome_guerra = $dados_sims->pesnguerra;
         $posto = $posto->pgabrev;
+
+        Session::put('posto', $posto);
+        Session::put('nome', $nome_guerra);
+        Session::put('saram', $saram);
         //echo $saram.' - '.$posto." ".$nome_guerra;
         //exit;
 
-      	return view('dashboards.dash_adm', compact('saram', 'nome_guerra', 'posto'));
+        //return view('dashboards.dash_adm', compact('saram', 'nome_guerra', 'posto'));
+
+      	return redirect()->route('militar.index');
     } 
 }
 }
